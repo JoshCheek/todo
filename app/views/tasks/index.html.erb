@@ -1,0 +1,11 @@
+<h1>Todo List</h1>
+<ul>
+<% @tasks.each do |task| %>
+  <li><%= task.description %> - <%= task.complete %></li>
+<% end %>
+</ul>
+
+<%form_for(Task.new) do |f| %>
+  <%= f.text_field :description %>
+  <%= f.submit "create task" %>
+<% end %>
