@@ -1,11 +1,17 @@
-<h1>Todo List</h1>
-<ul>
-<% @tasks.each do |task| %>
-  <li><%= task.description %> - <%= task.complete %></li>
-<% end %>
-</ul>
+<div class="todo-list">
 
-<%form_for(Task.new) do |f| %>
-  <%= f.text_field :description %>
-  <%= f.submit "create task" %>
-<% end %>
+<h1>Todo List</h1>
+<div class="tasks">
+  <input type="text" id="new-todo">
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    App = {};
+    App.collection = new Todo.collections.Todos();
+    App.view = new Todo.views.TodosView({collection: App.collection, el: '.todo-list'});
+  });
+</script>

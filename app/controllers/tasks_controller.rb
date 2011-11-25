@@ -5,13 +5,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    puts params["task"]
-    Task.create(params["task"])
-    redirect_to tasks_path
+    task = Task.create(params["task"])
+    render :json => task
   end
 
   def destroy
-    task = Task.find(1)
+    task = Task.find(params[:id])
     task.destroy
     render :nothing => true
   end

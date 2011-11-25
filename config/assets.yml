@@ -1,0 +1,14 @@
+embed_assets: on
+
+javascripts:
+  todo:
+    - public/javascripts/vendor/jquery.js
+    - public/javascripts/vendor/namespace.js
+    - public/javascripts/vendor/underscore-min.js
+    - public/javascripts/vendor/backbone.js
+    - public/javascripts/application.js
+    - public/javascripts/models/Todo.js
+    - public/javascripts/collections/Todos.js
+    - public/javascripts/views/TodosView.js
+
+

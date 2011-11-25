@@ -4,6 +4,7 @@
   <title>Todo</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
+  <%= include_javascripts :todo %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -11,4 +12,14 @@
 <%= yield %>
 
 </body>
+
+
 </html>
+
+<script type="text/javascript">
+  $(function() {
+    App = {};
+    App.collection = new Todo.collections.Todos();
+    App.view = new Todo.views.TodosView({collection: App.collection, el: 'todo-list'});
+  });
+</script>

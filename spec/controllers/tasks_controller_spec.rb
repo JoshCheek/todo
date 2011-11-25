@@ -32,7 +32,7 @@ describe TasksController do
     it "destroys a task" do
       task = mock(Task, :id => 1)
 
-      Task.should_receive(:find).with(1).and_return(task)
+      Task.should_receive(:find).with("1").and_return(task)
       task.should_receive(:destroy)
 
       delete :destroy, :id => "1"

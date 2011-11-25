@@ -6,6 +6,8 @@ gem 'rails', '3.0.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'jammit'
+gem 'jquery-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -28,4 +30,5 @@ gem 'sqlite3'
 # and rake tasks are available in development mode:
 # group :development, :test do
    gem 'rspec-rails'
+   gem 'jasmine'
 # end
