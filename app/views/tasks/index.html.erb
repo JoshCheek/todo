@@ -11,7 +11,8 @@
 <script type="text/javascript">
   $(document).ready(function() {
     App = {};
-    App.collection = new Todo.collections.Todos();
+    App.collection = new Todo.collections.Todos(<%= @tasks.to_json.html_safe %>);
     App.view = new Todo.views.TodosView({collection: App.collection, el: '.todo-list'});
+    App.view.render();
   });
 </script>

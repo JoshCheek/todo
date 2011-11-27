@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.create(params["task"])
+    task = Task.create(:description => params["description"])
     render :json => task
   end
 

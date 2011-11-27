@@ -10,5 +10,6 @@ javascripts:
     - public/javascripts/models/Todo.js
     - public/javascripts/collections/Todos.js
     - public/javascripts/views/TodosView.js
+    - public/javascripts/views/TodoView.js
 
 
