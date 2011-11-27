@@ -1,8 +1,8 @@
-describe("TodoView", function () {
+describe("TaskView", function () {
   beforeEach(function () {
     var model = new Backbone.Model({description: "do this thing"});
 
-    this.view = new Todo.views.TodoView({model: model});
+    this.view = new Todo.views.TaskView({model: model});
   });
 
   it("tagName is 'li'", function () {

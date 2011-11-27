@@ -1,15 +1,15 @@
 namespace('Todo.views', {
-  TodosView : Backbone.View.extend({
+  TasksView : Backbone.View.extend({
     tagName: 'div',
-    className: 'todo-list',
+    className: 'task-list',
     events: {
-      'keyup #new-todo' : 'createOnEnter',
+      'keyup #new-task' : 'createOnEnter',
     },
 
     initialize : function () {
       view = this;
-      this.collection.bind("add", this.addTodo, this);
-      _.bindAll(this, "addTodo");
+      this.collection.bind("add", this.addTask, this);
+      _.bindAll(this, "addTask");
     },
 
     createOnEnter : function (event) {
@@ -25,18 +25,18 @@ namespace('Todo.views', {
     },
 
     clearInput : function () {
-      $('#new-todo').attr("value", '');
+      $('#new-task').attr("value", '');
     },
 
     render : function () {
-      this.collection.each(this.addTodo);
+      this.collection.each(this.addTask);
       return this;
     },
 
-    addTodo: function (todo) {
-      var view = new Todo.views.TodoView({ model: todo});
-      var todoEl = view.render().el;
-      $('.todos').prepend(todoEl);
+    addTask: function (task) {
+      var view = new Todo.views.TaskView({ model: task});
+      var taskEl = view.render().el;
+      $('.tasks').prepend(taskEl);
     }
   })
 });

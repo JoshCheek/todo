@@ -1,20 +1,20 @@
 embed_assets: on
 
 javascripts:
-  todo:
+  task:
     - public/javascripts/vendor/jquery.js
     - public/javascripts/vendor/namespace.js
     - public/javascripts/vendor/underscore-min.js
     - public/javascripts/vendor/backbone.js
     - public/javascripts/application.js
-    - public/javascripts/models/Todo.js
-    - public/javascripts/collections/Todos.js
-    - public/javascripts/views/TodosView.js
-    - public/javascripts/views/TodoView.js
+    - public/javascripts/models/Task.js
+    - public/javascripts/collections/Tasks.js
+    - public/javascripts/views/TasksView.js
+    - public/javascripts/views/TaskView.js
 
 stylesheets:
-  todo:
+  task:
     - public/stylesheets/bootstrap.css
-    - public/stylesheets/todo.css
+    - public/stylesheets/task.css
 
 

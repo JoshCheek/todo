@@ -1,17 +1,17 @@
-<div class="todo-list container">
+<div class="task-list container">
 
-<h1>Todo List</h1>
-<div class="tasks">
-  <input type="text" id="new-todo">
-</div>
-<ul class='todos unstyled'></ul>
+  <h1>Task List</h1>
+
+  <input type="text" id="new-task">
+
+  <ul class='tasks unstyled'></ul>
 </div>
 
 <script type="text/javascript">
   $(document).ready(function() {
     App = {};
-    App.collection = new Todo.collections.Todos(<%= @tasks.to_json.html_safe %>);
-    App.view = new Todo.views.TodosView({collection: App.collection, el: '.todo-list'});
+    App.collection = new Todo.collections.Tasks(<%= @tasks.to_json.html_safe %>);
+    App.view = new Todo.views.TasksView({collection: App.collection, el: '.task-list'});
     App.view.render();
   });
 </script>
