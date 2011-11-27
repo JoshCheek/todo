@@ -15,5 +15,6 @@ javascripts:
 stylesheets:
   todo:
     - public/stylesheets/bootstrap.css
+    - public/stylesheets/todo.css
 
 
