@@ -1,36 +1,42 @@
 namespace('Todo.views', {
   TodosView : Backbone.View.extend({
-    tagName: 'ul',
+    tagName: 'div',
     className: 'todo-list',
     events: {
       'keyup #new-todo' : 'createOnEnter',
     },
 
-    //initialize : function () {
-    //  this.collection.bind("add", this.render, this);
-    //},
     initialize : function () {
+      view = this;
+      this.collection.bind("add", this.addTodo, this);
       _.bindAll(this, "addTodo");
     },
 
     createOnEnter : function (event) {
-      if (event.keyCode === 13) {
+      if (this.enterKeyPressed(event.keyCode)) {
         var inputValue = $(event.currentTarget).attr('value');
         this.collection.create({ description: inputValue });
-        $('#new-todo').attr("value", '');
-        $('.todo-list').append("<li>" + inputValue + "</li>");
-        view = this;
+        this.clearInput();
       }
+    },
+
+    enterKeyPressed : function (keyCode) {
+     return (keyCode === 13);
+    },
+
+    clearInput : function () {
+      $('#new-todo').attr("value", '');
     },
 
     render : function () {
       this.collection.each(this.addTodo);
+      return this;
     },
 
     addTodo: function (todo) {
       var view = new Todo.views.TodoView({ model: todo});
       var todoEl = view.render().el;
-      $(this.el).append(todoEl);
+      $('.todos').prepend(todoEl);
     }
   })
 });

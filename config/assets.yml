@@ -12,4 +12,8 @@ javascripts:
     - public/javascripts/views/TodosView.js
     - public/javascripts/views/TodoView.js
 
+stylesheets:
+  todo:
+    - public/stylesheets/bootstrap.css
+
 

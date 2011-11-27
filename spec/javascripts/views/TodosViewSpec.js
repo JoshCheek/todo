@@ -4,8 +4,8 @@ describe("TodosView", function () {
     this.view = new Todo.views.TodosView({collection: this.collection});
   });
 
-  it("tagName is 'ul'", function () {
-    expect(this.view.tagName).toEqual('ul');
+  it("tagName is 'div'", function () {
+    expect(this.view.tagName).toEqual('div');
   });
 
   it("className is 'todo-list'", function () {
@@ -13,17 +13,17 @@ describe("TodosView", function () {
   });
 
   describe("events", function () {
-      var expectedEvents = [
-        {event: 'keyup #new-todo', value: 'createOnEnter'}
-      ];
+    it("binds 'createOnEnter' to 'keyup #new-todo'", function () {
+      expect(this.view.events['keyup #new-todo']).toEqual('createOnEnter');
+    });
 
-      _.each(expectedEvents, function (event) {
-          it("binds " + event.value + " to " + event.event, function () {
-            expect(this.view.events[event.event]).toEqual(event.value);
-          });
-        },
-      this);
+    it("adds todo when adding to collection", function () {
+      setFixtures('<div class="todo-list"><ul class="todos"></ul></div>')
 
+      this.collection.add({ description: "foo"});
+
+      expect($('.todos').html()).toMatch("foo");
+    });
   });
 
   describe("createOnEnter", function () {
@@ -76,6 +76,7 @@ describe("TodosView", function () {
 
   describe("render", function () {
     beforeEach(function() {
+      setFixtures('<div class="todo-list"><ul class="todos"></ul></div>')
       this.todoView = new Backbone.View();
       this.todoView.render = function() {
         this.el = document.createElement('li');
@@ -86,11 +87,9 @@ describe("TodosView", function () {
         .returns(this.todoView);
       this.todo1 = new Backbone.Model({id:1});
       this.todo2 = new Backbone.Model({id:2});
-      this.todo3 = new Backbone.Model({id:3});
       this.view.collection = new Backbone.Collection([
         this.todo1,
         this.todo2,
-        this.todo3
       ]);
       this.view.render();
     });
@@ -101,21 +100,19 @@ describe("TodosView", function () {
 
     it("should create a Todo view for each todo item", function() {
       expect(this.todoViewStub)
-        .toHaveBeenCalledThrice();
+        .toHaveBeenCalledTwice();
       expect(this.todoViewStub)
         .toHaveBeenCalledWith({model:this.todo1});
       expect(this.todoViewStub)
         .toHaveBeenCalledWith({model:this.todo2});
-      expect(this.todoViewStub)
-        .toHaveBeenCalledWith({model:this.todo3});
     });
 
     it("should render each Todo view", function() {
-      expect(this.todoView.render).toHaveBeenCalledThrice();
+      expect(this.todoView.render).toHaveBeenCalledTwice();
     });
 
     it("appends the todo to the todo list", function() {
-      expect($(this.view.el).children().length).toEqual(3);
+      expect($('.todos').children().length).toEqual(2);
     });
   });
 });

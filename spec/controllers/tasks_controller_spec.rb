@@ -21,9 +21,9 @@ describe TasksController do
   context "create" do
     it "creates a task" do
       attributes = {"description" => "some description"}
-      Task.should_receive(:create).with({"description" => "some description"})
+      Task.should_receive(:create).with({:description => "some description"})
 
-      post :create, :task => {"description" => "some description"}
+      post :create, "description" => "some description"
 
     end
   end
