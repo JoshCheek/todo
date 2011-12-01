@@ -16,14 +16,6 @@ describe("TasksView", function () {
     it("binds 'createOnEnter' to 'keyup #new-task'", function () {
       expect(this.view.events['keyup #new-task']).toEqual('createOnEnter');
     });
-
-    it("adds task when adding to collection", function () {
-      setFixtures('<div class="task-list"><ul class="tasks"></ul></div>')
-
-      this.collection.add({ description: "foo"});
-
-      expect($('.tasks').html()).toMatch("foo");
-    });
   });
 
   describe("createOnEnter", function () {

@@ -1,11 +1,12 @@
-embed_assets: on
+template_function: _.template
 
 javascripts:
   task:
+    - public/javascripts/templates/task.jst
     - public/javascripts/vendor/jquery.js
-    - public/javascripts/vendor/namespace.js
-    - public/javascripts/vendor/underscore-min.js
+    - public/javascripts/vendor/underscore.js
     - public/javascripts/vendor/backbone.js
+    - public/javascripts/namespace.js
     - public/javascripts/application.js
     - public/javascripts/models/Task.js
     - public/javascripts/collections/Tasks.js
@@ -13,8 +14,6 @@ javascripts:
     - public/javascripts/views/TaskView.js
 
 stylesheets:
-  task:
-    - public/stylesheets/bootstrap.css
-    - public/stylesheets/task.css
-
-
+ task:
+   - public/stylesheets/bootstrap.css
+   - public/stylesheets/task.css
