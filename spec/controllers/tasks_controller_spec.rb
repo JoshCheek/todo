@@ -2,29 +2,40 @@ require 'spec_helper'
 
 describe TasksController do
   context "index" do
-    it "responds to index" do
-      Rails.logger.info("in index")
+    it "returns all tasks" do
       get :index
 
       response.status.should == 200
     end
 
     it "retrieves all tasks" do
-      Task.should_receive(:all)
+      tasks = [Task.new("description" => "foo"), Task.new("description" => "bar")]
+      Task.should_receive(:all).and_return(tasks)
 
       get :index
 
-      assigns(:tasks)
+      response.body.should == tasks.to_json
     end
   end
 
   context "create" do
+    before :each do
+      @attributes = {:description => "some description"}
+      @task = Task.new(@attributes)
+    end
+
     it "creates a task" do
-      attributes = {"description" => "some description"}
-      Task.should_receive(:create).with({:description => "some description"})
+      Task.should_receive(:create).with(@attributes)
+
+      post :create, "description" => "some description"
+    end
+
+    it "sends json response" do
+      Task.should_receive(:create).with(@attributes).and_return(@task)
 
       post :create, "description" => "some description"
 
+      response.body.should == @task.to_json
     end
   end
 

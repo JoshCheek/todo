@@ -12,6 +12,17 @@ namespace('Todo.views', {
       _.bindAll(this, "addTask");
     },
 
+    render : function () {
+      this.collection.each(this.addTask);
+      return this;
+    },
+
+    addTask: function (task) {
+      var view = new Todo.views.TaskView({ model: task});
+      var taskEl = view.render().el;
+      $('.tasks').prepend(taskEl);
+    },
+
     createOnEnter : function (event) {
       if (this.enterKeyPressed(event.keyCode)) {
         var inputValue = $(event.currentTarget).attr('value');
@@ -26,17 +37,7 @@ namespace('Todo.views', {
 
     clearInput : function () {
       $('#new-task').attr("value", '');
-    },
-
-    render : function () {
-      this.collection.each(this.addTask);
-      return this;
-    },
-
-    addTask: function (task) {
-      var view = new Todo.views.TaskView({ model: task});
-      var taskEl = view.render().el;
-      $('.tasks').prepend(taskEl);
     }
+
   })
 });

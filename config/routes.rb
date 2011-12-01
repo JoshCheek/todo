@@ -15,7 +15,7 @@ Todo::Application.routes.draw do
   #match 'tasks/:id' => 'tasks#destroy', :via => 'delete'
   #
   resources :tasks
-
+  resources :home, :only => [:index]
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
@@ -54,7 +54,7 @@ Todo::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => "tasks#index"
+   root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
 
