@@ -9,7 +9,7 @@ Rails is the backend, using Jammit to manage assets.
 
 Instructions:
 
-1) clone repo
+1) git clone git@github.com:mjansen401/todo.git
 2) bundle install
 3) rake db:migrate
 4) rails server
