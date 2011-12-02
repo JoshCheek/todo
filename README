@@ -5,3 +5,12 @@ This app uses Backbone.js to structure the Javascript needed for a simple todo l
 Specs written with Jasmine, using sinon.js for stubs and spies.
 
 Rails is the backend, using Jammit to manage assets.
+
+
+Instructions:
+
+1) clone repo
+2) bundle install
+3) rake db:migrate
+4) rails server
+5) profit
