@@ -15,3 +15,10 @@ Instructions:
 3) rake db:migrate
 4) rails server
 5) profit
+
+
+Homework:
+  - Complete tasks
+  - Remove tasks
+  - Add due date
+  - Clear completed tasks
